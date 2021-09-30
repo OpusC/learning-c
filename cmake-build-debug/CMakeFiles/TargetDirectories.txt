@@ -1,0 +1,3 @@
+/home/jupdown/CLionProjects/4101A1Q1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/jupdown/CLionProjects/4101A1Q1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/jupdown/CLionProjects/4101A1Q1/cmake-build-debug/CMakeFiles/4101A1Q1.dir
