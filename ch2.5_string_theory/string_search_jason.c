@@ -23,23 +23,29 @@
 #include <stdio.h>
 int main() {
 
-		char tracks[][80] = {
-				"I left my heart in the Mastercard Office",
-				"Pune, Pune - a wonderful town",
-				"Dancing with IBM ODM RULES ENGINE",
-				"From here to the Vancouver Office",
-				"The HTTP 500 error from Rules Engine",
-		};
+	char tracks[][80] = {
+		"I left my heart in the Mastercard Office",
+		"Pune, Pune - a wonderful town",
+		"Dancing with IBM ODM RULES ENGINE",
+		"From here to the Vancouver Office",
+		"The HTTP 500 error from Rules Engine",
+	};
 
-		printf("Search for text in the track you are looking for: ");
+	printf("Search for text in the track you are looking for: ");
 
-		char input[80];
-		// Note: Strings require a null byte at the end, so we can only accept
-		// 80 - 1 as input to ensure we can put the null byte at the end
-		scanf("%79s", input);
+	char input[80];
+	// Note: Strings require a null byte at the end, so we can only accept
+	// 80 - 1 as input to ensure we can put the null byte at the end
+	// scanf("%79s", input);
+	
+	// Note: fgets is usually preferred because the length of input is a required argument
+	// Also fgets is meant for strings so you can use 80 as the argument value, it knows to keep
+	// room for the null terminated value
+	// fgets(input, 80, stdin)
+	fgets(input, 80, stdin);
 
 
-		/*
+	/*
 		* strstr https://en.cppreference.com/w/c/string/byte/strstr
 		* Parameters:
 		* str - pointer to the null-terminated byte string to examine
@@ -49,23 +55,23 @@ int main() {
 		* pointer to the first character of the found substring in str, or a null pointer
 		* if such substring is not found. If substr points to an empty string, str is returned
 		*
-		*/
+	*/
 
-		int found_match = FALSE;
+	int found_match = FALSE;
 
-		for (unsigned int i = 0; i < 5; i++) {
-				char* res = strstr(tracks[i], input);
-				if (res != NULL) {
-						printf("%s was found at index %u\n", tracks[i], i);
-						found_match = TRUE;
+	for (int i = 0; i < 5; i++) {
+		char* res = strstr(tracks[i], input);
+		if (res != NULL) {
+			printf("%s was found at index %u\n", tracks[i], i);
+			found_match = TRUE;
 
-				}
 		}
+	}
 
-		if (found_match) {
-				exit(EXIT_SUCCESS);
-		}
+	if (found_match) {
+		exit(EXIT_SUCCESS);
+	}
 
-		printf("No results were found\n");
+	printf("No results were found\n");
 
 }
