@@ -21,14 +21,23 @@
 * strcat(): Concatenate two strings
 */
 #include <stdio.h>
+
+void replace_newline_with_null_terminator(char *str)
+{
+	if (strchr(str, '\n'))
+	{
+		str[strcspn(str, "\n")] = '\0';
+	}
+}
+
 int main() {
 
 	char tracks[][80] = {
 		"I left my heart in the Mastercard Office",
 		"Pune, Pune - a wonderful town",
 		"Dancing with IBM ODM RULES ENGINE",
-		"From here to the Vancouver Office",
-		"The HTTP 500 error from Rules Engine",
+		"From Toronto to the Vancouver Office",
+		"The com.ibm.rules.res.xu exception from the Rules Engine",
 	};
 
 	printf("Search for text in the track you are looking for: ");
@@ -44,6 +53,7 @@ int main() {
 	// fgets(input, 80, stdin)
 	fgets(input, 80, stdin);
 
+	replace_newline_with_null_terminator(input);
 
 	/*
 		* strstr https://en.cppreference.com/w/c/string/byte/strstr
