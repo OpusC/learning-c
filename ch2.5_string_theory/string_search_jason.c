@@ -21,6 +21,15 @@
 * strcat(): Concatenate two strings
 */
 #include <stdio.h>
+
+void replace_newline_with_null_terminator(char *str)
+{
+	if (strchr(str, '\n'))
+	{
+		str[strcspn(str, "\n")] = '\0';
+	}
+}
+
 int main() {
 
 	char tracks[][80] = {
@@ -44,6 +53,7 @@ int main() {
 	// fgets(input, 80, stdin)
 	fgets(input, 80, stdin);
 
+	replace_newline_with_null_terminator(input);
 
 	/*
 		* strstr https://en.cppreference.com/w/c/string/byte/strstr
