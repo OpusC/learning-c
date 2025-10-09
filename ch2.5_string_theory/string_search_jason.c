@@ -27,8 +27,8 @@ int main() {
 		"I left my heart in the Mastercard Office",
 		"Pune, Pune - a wonderful town",
 		"Dancing with IBM ODM RULES ENGINE",
-		"From here to the Vancouver Office",
-		"The HTTP 500 error from Rules Engine",
+		"From Toronto to the Vancouver Office",
+		"The com.ibm.rules.res.xu exception from the Rules Engine",
 	};
 
 	printf("Search for text in the track you are looking for: ");
