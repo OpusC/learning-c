@@ -45,11 +45,12 @@ int main() {
 	char input[80];
 	// Note: Strings require a null byte at the end, so we can only accept
 	// 80 - 1 as input to ensure we can put the null byte at the end
+	// also scanf bla bla bla stops reading at the first whitespace so we can't use it
 	// scanf("%79s", input);
 	
 	// Note: fgets is usually preferred because the length of input is a required argument
-	// Also fgets is meant for strings so you can use 80 as the argument value, it knows to keep
-	// room for the null terminated value
+	// Also fgets is meant for strings so you can use 80 as the argument value, the size
+	// provided is the size of the buffer so it will need be the length of the input + 1
 	// fgets(input, 80, stdin)
 	fgets(input, 80, stdin);
 
@@ -68,6 +69,12 @@ int main() {
 	*/
 
 	int found_match = FALSE;
+
+	if (strlen(input) == 0)
+	{
+		printf("You must enter a search term\n");
+		exit(EXIT_FAILURE);
+	}
 
 	for (int i = 0; i < 5; i++) {
 		char* res = strstr(tracks[i], input);
