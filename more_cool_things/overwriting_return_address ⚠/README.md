@@ -104,7 +104,7 @@ Once you have found the address of where the return pointer is stored, you can a
 
 To find this not using JetBrains CLion, you can use `gdb` and call `disassemble vulnerable_function` to see the assembly code.
 
-Finally, you will then need to pass the file into the application via a pipe `|` operator like this:
+Finally, you will then need to pass the file into the application via an input redirection operator `<` like this:
 ```shell
 ./execute_arbitrary_code < payload.bin
 ```
