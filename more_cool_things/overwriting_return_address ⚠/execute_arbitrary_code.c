@@ -23,8 +23,11 @@ void vulnerable_function() {
 
     // UNSAFE: gets() doesn't check buffer bounds
     // This allows for buffer overflow attacks
-    // gets(buffer);
-    read(0, buffer, 128);
+    gets(buffer);
+
+    // UNSAFE: read() with count=128 will overflow if buffer < 128 bytes
+    // Unlike gets(), read() itself is safe - but misuse enables buffer overflow
+    // read(0, buffer, 128);
 
     printf("You entered: %s\n", buffer);
     printf("If you see this, the overflow didn't redirect execution\n");
@@ -34,7 +37,6 @@ int main() {
     printf("=== Buffer Overflow Exploit Demo ===\n");
     printf("This program demonstrates how buffer overflow can lead to arbitrary code execution\n");
     printf("WARNING: This code contains intentional vulnerabilities for educational purposes\n\n");
-
     printf("To exploit this:\n");
     printf("1. Compile with: gcc -fno-stack-protector -z execstack -no-pie execute_arbitrary_code.c -o exploit\n");
     printf("2. Find the offset to overwrite return address (usually 72-80 bytes for this setup)\n");
