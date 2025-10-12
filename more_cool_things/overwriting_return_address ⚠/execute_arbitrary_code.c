@@ -40,13 +40,12 @@ void vulnerable_function() {
 
     char buffer[64];  // Small buffer - easy to overflow
 
-
     printf("\033[1;31m");
     printf("╔════════════════════════════════════════════════╗\n");
     printf("║Buffer address: %p                  ║\n", buffer);
     printf("║vulnerable_function function address: %p  ║\n", vulnerable_function);
     printf("║execute_whoami function address: %p       ║\n", execute_whoami);
-    printf("║return address: %p                        ║\n", return_address);
+    printf("║function's normal return address: %p      ║\n", return_address);
     printf("╚════════════════════════════════════════════════╝\n");
     printf("\033[0m");
 
