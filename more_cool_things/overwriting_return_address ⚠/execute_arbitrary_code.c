@@ -1,3 +1,17 @@
+/******************************************************************************
+ * ⚠️⚠️⚠️ WARNING: INTENTIONALLY VULNERABLE CODE ⚠️⚠️⚠️
+ *
+ * This code contains DELIBERATE security vulnerabilities for educational
+ * demonstration of buffer overflow exploits.
+ *
+ * DO NOT:
+ *   - Use this code in any production environment
+ *   - Compile with privileges
+ *   - Execute on systems with sensitive data
+ *   - Deploy on network-accessible systems
+ *
+ * ONLY use in isolated, sandboxed environments for learning purposes.
+ ******************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
