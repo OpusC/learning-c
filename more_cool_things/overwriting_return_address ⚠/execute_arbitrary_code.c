@@ -20,9 +20,6 @@ void vulnerable_function() {
     printf("Buffer address: %p\n", buffer);
     printf("vulnerable_function function address: %p\n", vulnerable_function);
     printf("execute_whoami function address: %p\n", execute_whoami);
-    printf("execute_fastfetch function address: %p\n", execute_fastfetch);
-    printf("execute_fastfetch_two function address: %p\n", execute_fastfetch_two);
-    printf("execute_fastfetch_three function address: %p\n", execute_fastfetch_three);
 
     // UNSAFE: gets() doesn't check buffer bounds
     // This allows for buffer overflow attacks
