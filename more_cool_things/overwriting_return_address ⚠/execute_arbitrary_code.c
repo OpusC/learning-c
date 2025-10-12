@@ -12,6 +12,12 @@
  *
  * ONLY use in isolated, sandboxed environments for learning purposes.
  ******************************************************************************/
+// SAFETY: Uncomment ONLY if you understand the risks
+// #define ENABLE_VULNERABLE_CODE
+#ifndef ENABLE_VULNERABLE_CODE
+#error "This code is intentionally vulnerable. Read the README and uncomment ENABLE_VULNERABLE_CODE to compile."
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
