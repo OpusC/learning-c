@@ -13,9 +13,9 @@
  * ONLY use in isolated, sandboxed environments for learning purposes.
  ******************************************************************************/
 // SAFETY: Uncomment ONLY if you understand the risks
-// #define ENABLE_VULNERABLE_CODE
+#define ENABLE_VULNERABLE_CODE
 #ifndef ENABLE_VULNERABLE_CODE
-#error "This code is intentionally vulnerable. Read the README and uncomment ENABLE_VULNERABLE_CODE to compile."
+#error "This code is intentionally vulnerable. Read the SECURITY.md file and uncomment ENABLE_VULNERABLE_CODE to compile."
 #endif
 
 #warning "Compiling intentionally vulnerable code - ensure you are in a sandboxed environment"
@@ -36,12 +36,21 @@ void execute_whoami() {
 
 // Vulnerable function with buffer overflow
 void vulnerable_function() {
+    void* return_address = __builtin_return_address(0);  // the return address of this function
+
     char buffer[64];  // Small buffer - easy to overflow
 
+
+    printf("\033[1;31m");
+    printf("╔════════════════════════════════════════════════╗\n");
+    printf("║Buffer address: %p                  ║\n", buffer);
+    printf("║vulnerable_function function address: %p  ║\n", vulnerable_function);
+    printf("║execute_whoami function address: %p       ║\n", execute_whoami);
+    printf("║return address: %p                        ║\n", return_address);
+    printf("╚════════════════════════════════════════════════╝\n");
+    printf("\033[0m");
+
     printf("Enter some text (this is vulnerable to buffer overflow):\n");
-    printf("Buffer address: %p\n", buffer);
-    printf("vulnerable_function function address: %p\n", vulnerable_function);
-    printf("execute_whoami function address: %p\n", execute_whoami);
 
     // UNSAFE: gets() doesn't check buffer bounds
     // This allows for buffer overflow attacks
