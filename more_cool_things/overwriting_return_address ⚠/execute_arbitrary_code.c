@@ -68,10 +68,9 @@ int main() {
     printf("This program demonstrates how buffer overflow can lead to arbitrary code execution\n");
     printf("WARNING: This code contains intentional vulnerabilities for educational purposes\n\n");
     printf("To exploit this:\n");
-    printf("1. Compile with: gcc -fno-stack-protector -z execstack -no-pie execute_arbitrary_code.c -o exploit\n");
-    printf("2. Find the offset to overwrite return address (usually 72-80 bytes for this setup)\n");
-    printf("3. Create payload: python -c \"print('A'*72 + '\\x[address_bytes]')\" | ./exploit\n");
-    printf("4. Replace [address_bytes] with the execute_whoami function address shown below\n\n");
+    printf("1. Compile with: gcc -std=c99 -fno-stack-protector -z execstack -no-pie -g execute_arbitrary_code.c -o execute_arbitrary_code\n");
+    printf("2. Find the offset to overwrite return address (see README.md for more information)\n");
+    printf("3. Create a payload file and use input redirection to pass it as stdin\n");
 
     vulnerable_function();
 
