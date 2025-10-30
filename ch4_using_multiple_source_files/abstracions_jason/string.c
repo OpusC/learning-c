@@ -31,8 +31,8 @@ String* string_concat(const String* string_1, const String* string_2) {
 	int new_length = string_1->length + string_2->length;
 
 	char* new_data = malloc((size_t) new_length);
-	memcpy(new_data, string_1, (size_t) string_1->length);
-	memcpy(new_data + string_1->length, string_2, string_2->length);
+	memcpy(new_data, string_1->data, (size_t) string_1->length);
+	memcpy(new_data + string_1->length, string_2->data, string_2->length);
 	
 	String* new_string = malloc(sizeof(String));
 
