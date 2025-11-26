@@ -1,13 +1,13 @@
 #pragma once
 
-typedef struct string String;
+typedef struct string* String;
 
-String* string_create(const char*);
+String string_create(const char*);
 
-void string_destroy(String*);
+void string_destroy(String);
 
-int string_length(const String*);
+int string_length(const String);
 
-String* string_concat(const String*, const String*);
+String string_concat(const String, const String);
 
-void string_print(const String*);
+void string_print(const String);

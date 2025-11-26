@@ -1,6 +1,6 @@
 #pragma once
 
-struct rectangle;
+struct rectangle; // opaque struct
 
 struct rectangle* create_rectangle(double height, double width); // this abstraction gets better with the typedef keyword,
 // but let's keep it simple for now
