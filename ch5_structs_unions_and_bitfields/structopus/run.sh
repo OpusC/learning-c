@@ -1,0 +1,1 @@
+gcc first-step.c second-step.c third-step.c fourth-step.c structopus.c -o structopus && ./structopus
