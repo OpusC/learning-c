@@ -43,9 +43,10 @@ bool correctnessVerification(node_t * head){
         if(countDown == 0) {
             countDown = count;
             compare = current;
-            //printf("countDown = %d,  count = %d\n", countDown, count);
+            printf("countDown = %d,  count = %d\n", countDown, count);
         }
         current = current->next;
+        printf("comparing %p to %p\n", compare, current);
         if(compare == current){
             return false;
         }
