@@ -35,7 +35,7 @@ square_list_ptr create()
     list->capacity = 0;
     list->size = 0;
     list->head = nullptr;
-    // list->tail = nullptr;
+    list->tail = nullptr;
 
     return list;
 }
@@ -45,10 +45,10 @@ void insert(square_list_ptr list, int value) {
     if (!list->head) {
         list->head = n;
     } else {
-        // list->tail->next = n;
+        list->tail->next = n;
     }
 
-    // list->tail = n;
+    list->tail = n;
     list->size++;
     list->capacity = pow(ceil(sqrt(list->size)), 2);
 }
@@ -63,8 +63,4 @@ void print(square_list_ptr list)
 void destroy(square_list_ptr list)
 {
     //stubbed
-}
-
-int main() {
-    return 0;
 }

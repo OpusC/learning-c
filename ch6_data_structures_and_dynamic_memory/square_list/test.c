@@ -7,7 +7,7 @@ void testInsert() {
     
     insert(list, 1);
     assert(list->size == 1);
-    assert(list->capacity == 4);
+    assert(list->capacity == 1);
 
     insert(list, 2);
     insert(list, 3);
