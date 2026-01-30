@@ -1,5 +1,6 @@
 #include "square_list.h"
 
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,10 +11,23 @@ typedef struct node
     int value;
 } node;
 
+node *create_node(int value) {
+    node *n = malloc(sizeof(node));
+    if (!n) {
+        exit(EXIT_FAILURE);
+    }
+    
+    n->value = value;
+    n->next = nullptr;
+    n->next_col = nullptr;
 
-square_list *create()
+    return n;
+}
+
+
+square_list_ptr create()
 {
-    square_list* list = malloc(sizeof(square_list));
+    square_list_ptr list = malloc(sizeof(square_list));
     if (!list)
     {
         exit(1);
@@ -21,16 +35,36 @@ square_list *create()
     list->capacity = 0;
     list->size = 0;
     list->head = nullptr;
+    // list->tail = nullptr;
 
     return list;
 }
-void insert(int value);
-void delete(int value);
-void print()
+
+void insert(square_list_ptr list, int value) {
+    node *n = create_node(value);
+    if (!list->head) {
+        list->head = n;
+    } else {
+        // list->tail->next = n;
+    }
+
+    // list->tail = n;
+    list->size++;
+    list->capacity = pow(ceil(sqrt(list->size)), 2);
+}
+
+void square_list_remove(square_list_ptr list, int value) {
+    // nothing
+}
+void print(square_list_ptr list)
 {
     printf("Hello World");
 }
-void destroy(square_list *list)
+void destroy(square_list_ptr list)
 {
     //stubbed
+}
+
+int main() {
+    return 0;
 }

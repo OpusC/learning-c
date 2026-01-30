@@ -3,17 +3,18 @@
 
 typedef struct node node;
 
-typedef struct square_list
+typedef struct Square_list
 {
     unsigned int size;
     unsigned int capacity;
     node *head;
-}square_list;
+    node *tail;
+} square_list, *square_list_ptr;
 
-square_list *create();
-void insert(int value);
-void delete(int value);
-void print();
-void destroy(square_list *list);
+square_list_ptr create();
+void insert(square_list_ptr list, int value);
+void square_list_remove(square_list_ptr list, int value);
+void print(square_list_ptr list);
+void destroy(square_list_ptr list);
 
 #endif //LEARNING_C_SQUARE_LIST_H

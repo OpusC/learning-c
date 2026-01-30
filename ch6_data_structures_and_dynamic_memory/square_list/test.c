@@ -24,13 +24,13 @@ void testInsert() {
     printf("testInsert has passed\n");
 }
 
-void testDelete() {
+void testsquare_list_remove() {
     square_list *list = create();
 
     insert(list, 1);
     assert(list->size == 1);
 
-    delete(list, 1);
+    square_list_remove(list, 1);
     assert(list->size == 0);
 
     insert(list, 1);
@@ -39,17 +39,16 @@ void testDelete() {
     insert(list, 4);
     insert(list, 5);
     assert(list->size == 5);
-    delete(list, 5);
+    square_list_remove(list, 5);
     assert(list->size == 4);
 
-    delete(list);
+    square_list_remove(list, 5);
     printf("testInsert has passed\n");
-
 }
 
 int main() {
 
     testInsert();
-    testDelete();
+    testsquare_list_remove();
 
 }
