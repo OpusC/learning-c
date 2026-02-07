@@ -1,9 +1,10 @@
+#include "square_list.c"
 #include "square_list.h"
 #include <assert.h>
 #include <stdio.h>
 
 void testInsert() {
-  square_list *list = create();
+  square_list_ptr list = create();
 
   insert(list, 1);
   assert(list->size == 1);
@@ -25,7 +26,7 @@ void testInsert() {
 }
 
 void testsquare_list_remove() {
-  square_list *list = create();
+  square_list_ptr list = create();
 
   insert(list, 1);
   assert(list->size == 1);
@@ -46,8 +47,29 @@ void testsquare_list_remove() {
   printf("testSquareListRemove has passed\n");
 }
 
+void test_insert_sorted() {
+  square_list_ptr list = create();
+
+  insert(list, 2);
+  insert(list, 1);
+
+  assert(list->head->value == 1);
+  assert(list->head->next->value == 2);
+}
+
+void should_set_head_to_nullptr_if_removed() {
+  square_list_ptr list = create();
+  insert(list, 1);
+  square_list_remove(list, 1);
+
+  assert(list->head == nullptr);
+}
+
 int main() {
 
   testInsert();
   testsquare_list_remove();
+  should_set_head_to_nullptr_if_removed();
+
+  test_insert_sorted();
 }
