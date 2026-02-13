@@ -47,7 +47,7 @@ void testsquare_list_remove() {
   printf("testSquareListRemove has passed\n");
 }
 
-void test_insert_sorted() {
+void should_insert_before_list_to_keep_sorted_order() {
   square_list_ptr list = create();
 
   insert(list, 2);
@@ -65,11 +65,30 @@ void should_set_head_to_nullptr_if_removed() {
   assert(list->head == nullptr);
 }
 
-int main() {
+void should_insert_in_sorted_order() {
+  square_list_ptr list = create();
+  insert(list, 3);
+  insert(list, 5);
+  insert(list, 4);
+  assert(list->head->value == 3);
+  assert(list->head->next->value == 4);
+  assert(list->head->next->next->value == 5);
+}
 
+void should_set_head_if_head_is_removed() {
+  square_list_ptr list = create();
+  insert(list, 3);
+  insert(list, 4);
+  square_list_remove(list, 3);
+  assert(list->head != nullptr);
+  assert(list->head->value == 3);
+}
+
+int main() {
   testInsert();
   testsquare_list_remove();
   should_set_head_to_nullptr_if_removed();
-
-  test_insert_sorted();
+  should_insert_in_sorted_order();
+  should_insert_before_list_to_keep_sorted_order();
+  should_set_head_if_head_is_removed();
 }
