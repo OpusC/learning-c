@@ -54,6 +54,7 @@ void should_insert_before_list_to_keep_sorted_order() {
 
   assert(list->head->value == 1);
   assert(list->head->next->value == 2);
+  printf("should_insert_before_list_to_keep_sorted_order has PASSED\n");
 }
 
 void should_set_head_to_nullptr_if_removed() {
@@ -62,6 +63,7 @@ void should_set_head_to_nullptr_if_removed() {
   square_list_remove(list, 1);
 
   assert(list->head == nullptr);
+  printf("should_set_head_to_nullptr_if_removed has PASSED\n");
 }
 
 void should_insert_in_sorted_order() {
@@ -69,9 +71,20 @@ void should_insert_in_sorted_order() {
   insert(list, 3);
   insert(list, 5);
   insert(list, 4);
+
   assert(list->head->value == 3);
   assert(list->head->next->value == 4);
   assert(list->head->next->next->value == 5);
+  printf("should_insert_in_sorted_order has PASSED\n");
+}
+
+void should_update_tail_when_inserting_new_greatest_value() {
+  square_list_ptr list = create();
+  insert(list, 3);
+  insert(list, 5);
+
+  assert(list->tail->value == 5);
+  printf("should_update_tail_when_inserting_new_greatest_value has PASSED\n");
 }
 
 void should_set_head_if_head_is_removed() {
@@ -81,6 +94,7 @@ void should_set_head_if_head_is_removed() {
   square_list_remove(list, 3);
   assert(list->head != nullptr);
   assert(list->head->value == 4);
+  printf("should_set_head_if_head_is_removed has PASSED");
 }
 
 int main() {
