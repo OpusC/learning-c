@@ -1,7 +1,12 @@
 #ifndef LEARNING_C_SQUARE_LIST_H
 #define LEARNING_C_SQUARE_LIST_H
 
-typedef struct node node;
+// typedef struct node node;
+typedef struct node {
+    struct node *next_col;
+    struct node *next;
+    int value;
+} node;
 
 typedef struct Square_list
 {

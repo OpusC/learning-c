@@ -3,7 +3,7 @@
 set -e
 
 CC=gcc
-CFLAGS="-Wall -Wextra -g"
+CFLAGS="-Wall -Wextra -Wunused-parameter -g"
 BIN=test_square_list
 
 echo "compiling"

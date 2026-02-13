@@ -1,4 +1,3 @@
-#include "square_list.c"
 #include "square_list.h"
 #include <assert.h>
 #include <stdio.h>
@@ -81,14 +80,14 @@ void should_set_head_if_head_is_removed() {
   insert(list, 4);
   square_list_remove(list, 3);
   assert(list->head != nullptr);
-  assert(list->head->value == 3);
+  assert(list->head->value == 4);
 }
 
 int main() {
   testInsert();
   testsquare_list_remove();
   should_set_head_to_nullptr_if_removed();
+  should_set_head_if_head_is_removed();
   should_insert_in_sorted_order();
   should_insert_before_list_to_keep_sorted_order();
-  should_set_head_if_head_is_removed();
 }

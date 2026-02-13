@@ -4,11 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node {
-  struct node *next_col;
-  struct node *next;
-  int value;
-} node;
+// typedef struct node {
+//   struct node *next_col;
+//   struct node *next;
+//   int value;
+// } node;
 
 node *create_node(int value) {
   node *n = malloc(sizeof(node));
@@ -41,10 +41,27 @@ void insert(square_list_ptr list, int value) {
   if (!list->head) {
     list->head = n;
   } else {
-    list->tail->next = n;
+    //insert sorted
+    node *curr = list->head;
+    node *prev = list->head;
+    while (curr != nullptr)
+    {
+      if (curr->value > value)
+      {
+        n->next = curr;
+        break;
+      }
+      prev = curr;
+      curr = curr->next;
+    }
+    if (curr == nullptr)
+    {
+      list->tail = n;
+    }
+    prev->next = n;
   }
 
-  list->tail = n;
+  // list->tail = n;
   list->size++;
   list->capacity = pow(ceil(sqrt(list->size)), 2);
 }
@@ -52,9 +69,14 @@ void insert(square_list_ptr list, int value) {
 void square_list_remove(square_list_ptr list, int value) {
   node *curr = list->head;
   node *prev = list->head;
+
   while (curr != nullptr) {
     if (curr->value == value) {
       prev->next = curr->next;
+      if (list->head->value == value)
+      {
+        list->head = list->head->next;
+      }
       free(curr);
       list->size--;
       return;
@@ -64,7 +86,12 @@ void square_list_remove(square_list_ptr list, int value) {
     }
   }
 }
-void print(square_list_ptr list) { printf("Hello World"); }
+void print(square_list_ptr list)
+{
+  (void) list;
+  printf("Hello World");
+}
 void destroy(square_list_ptr list) {
+  printf("We got %d", list->head->value);
   // stubbed
 }
