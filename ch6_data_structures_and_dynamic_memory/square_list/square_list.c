@@ -54,12 +54,17 @@ void insert(square_list_ptr list, int value) {
       prev = curr;
       curr = curr->next;
     }
+    if(value < list->head->value)
+    {
+      list->head = n;
+    }
     if (curr == nullptr)
     {
       list->tail = n;
     }
     prev->next = n;
   }
+  
 
   // list->tail = n;
   list->size++;

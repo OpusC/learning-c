@@ -46,7 +46,7 @@ void testsquare_list_remove() {
   printf("testSquareListRemove has passed\n");
 }
 
-void should_insert_before_list_to_keep_sorted_order() {
+void should_insert_before_head_to_keep_sorted_order() {
   square_list_ptr list = create();
 
   insert(list, 2);
@@ -103,5 +103,5 @@ int main() {
   should_set_head_to_nullptr_if_removed();
   should_set_head_if_head_is_removed();
   should_insert_in_sorted_order();
-  should_insert_before_list_to_keep_sorted_order();
+  should_insert_before_head_to_keep_sorted_order();
 }
